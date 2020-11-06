@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron hjumbo">
+    <div class="overlay">
+        <h1 class="text-center text-bold" style="background-color: gold;">VIEW BLOGS HERE</h1>
+    </div>
+</div>
+<!-- Card -->
+
+{% for blog in blogs %}
+<div class="card mt-5">
+    <!-- Button -->
+    <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"></a>
+
+    <!-- Card content -->
+    <div class="card-body">
+
+        <!-- Title -->
+        <h4 class="card-title">{{ blog.title }}</h4>
+        <hr>
+        <!-- Text -->
+        <p class="card-text">{{ blog.blog_content }}</p>
+
+    </div>
+
+    <!-- Card footer -->
+    <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+        <ul class="list-unstyled list-inline font-small">
+            <div class="row">
+                <div class="col-md-4">
+                    <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>{{ blog.posted }}
+                    </li>
+                </div>
+                <div class="col-md-4">
+                    <li class="list-inline-item pr-2"><a href="/comment/{{blog.id}}" class="white-text"><i
+                                class="far fa-comments pr-1"></i></a>
+                </div>
+                <div class="col-md-4">
+                    <li class="list-inline-item pr-2"><a href="{{url_for('main.delete_blog', blog_id=blog.id) }}"
+                            class="white-text"><i class="fa fa-trash text-danger pr-1"></i></a>
+
+                </div>
+            </div>
+        </ul>
+    </div>
+
+</div>
+{% endfor %}
+
+{% endblock %}

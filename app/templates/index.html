@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories = true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}}">
+    {{message}}
+</div>
+{% endfor %}
+{% endif%}
+{% endwith %}
+<div class="jumbotron hjumbo" style="background-color: gold;">
+    <div class="overlay">
+        <h1 class="text-center text-bold" >ROJA-BLO</h1>
+    </div>
+</div>
+<!-- Card Dark -->
+<div class="card">
+
+    <!-- Card content -->
+    <div class="card-body elegant-color white-text rounded-bottom">
+
+        <!-- Social shares button -->
+        <a class="activator waves-effect mr-4"><i class="white-text"></i></a>
+        <!-- Title -->
+        <h4 class="card-title white-text">QUOTE</h4>
+        <hr class="hr-light">
+        <!-- Text -->
+        <p class="card-text white-text mb-4">{{quote.quote}}</p>
+        <!-- Link -->
+        <a href="#!" class="white-text d-flex justify-content-start">
+            <h5 class="white-text">{{quote.author}}</h5>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
